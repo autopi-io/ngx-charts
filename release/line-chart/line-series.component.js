@@ -60,7 +60,10 @@ var LineSeriesComponent = /** @class */ (function () {
             return value;
         })
             .y(function (d) { return _this.yScale(d.value); })
-            .curve(this.curve);
+            .curve(this.curve)
+            .defined(function (d) {
+            return d.value !== null;
+        });
     };
     LineSeriesComponent.prototype.getRangeGenerator = function () {
         var _this = this;
@@ -93,7 +96,10 @@ var LineSeriesComponent = /** @class */ (function () {
             .x(xProperty)
             .y0(function () { return _this.yScale.range()[0]; })
             .y1(function (d) { return _this.yScale(d.value); })
-            .curve(this.curve);
+            .curve(this.curve)
+            .defined(function (d) {
+            return d.value !== null;
+        });
     };
     LineSeriesComponent.prototype.sortData = function (data) {
         if (this.scaleType === 'linear') {
